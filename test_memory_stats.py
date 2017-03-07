@@ -34,8 +34,8 @@ for d in ["/gpu:0"]:
         stats_op = memory_probe_ops.max_bytes_in_use()
         run_metadata = tf.RunMetadata()
         run_options = tf.RunOptions(trace_level=tf.RunOptions.FULL_TRACE)
-        print("Before init %10d out of %10d bytes with allocator %s" % tuple(sess.run(stats_op)))
+        print("Before init - %10d" % sess.run(stats_op))
         sess.run(var.initializer)
-        print("After  init %10d out of %10d bytes with allocator %s" % tuple(sess.run(stats_op)))
+        print("After  init - %10d" % sess.run(stats_op))
         if run_with_tracing:
             print(run_metadata)
